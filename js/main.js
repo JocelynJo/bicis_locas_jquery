@@ -85,17 +85,7 @@ function validateForm(){
 		$('#input-password').parent().append(spanPass3);
 	}
 
-	//validar lista!!!!
-	var selecBici = $('select').val();
-		if(selecBici == 0){
-			var biciContiene=$('.form-group:eq(1)');//seleccona el ellemento que esta en el indice 2 desde el form-group
-			biciContiene.append('<span class="err">Seleciona una bici!</span>'); 
-			return false;
-		}else{
-			$('.err').fadeOut();
-		}
-		
-	
+
 	/*
 	var selectBici = $('select').val();
 	
