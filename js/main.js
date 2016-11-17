@@ -95,6 +95,10 @@ function validateForm(){
 }
 
 
+<<<<<<< HEAD
+=======
+//funciones paea validar nombre y apellido
+>>>>>>> master
 function validarLetras(nombre){
 	var filter6=/^[A-Za-z\_\-\.\s\xF1\xD1]+$/;
 	if (filter6.test(nombre)){
