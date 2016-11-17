@@ -1,6 +1,8 @@
 
 function validateForm(){
- 
+
+ 	listaBici();
+
 	var name= $('#name').val();
 	if(name.length==0|| name==null){
 		var spanNuevo=$('<span class="nom">Este campo es obligatorio</span>');
@@ -23,7 +25,9 @@ function validateForm(){
 
 	var lastname= $('#lastname').val();
 	if(lastname.length==0|| lastname==null){
+
 		$('.ape').fadeOut();
+
 		var spanLastname=$('<span class="ape">Este campo es obligatorio</span>');
 		$('.lastname-container').append(spanLastname);
 		return false; 
@@ -33,7 +37,9 @@ function validateForm(){
 		$('.lastname-container').append(spanLastname1);
 		return false; 
 	}else if(!validarMayus(lastname)){
+
 		$('.ape').fadeOut();
+
 		var spanLastname2=$('<span class="ape">Debe comenzar con mayuscula</span>');
 		$('.lastname-container').append(spanLastname2);
 		return false; 
@@ -78,6 +84,7 @@ function validateForm(){
 		var spanPass3=$('<span>Contraseña poco segura</span>');
 		$('#input-password').parent().append(spanPass3);
 	}
+
 	//validar lista!!!!
 	var selecBici = $('select').val();
 		if(selecBici == 0){
@@ -99,6 +106,50 @@ function validateForm(){
 	}*/
 }
 
+
+
+
+	
+
+	//validar lista!!!!
+	//var selecBici = $('select').val();
+	//	if(selecBici == 0){
+	//		var biciContiene=$('.form-group:eq(1)');//seleccona el ellemento que esta en el indice 2 desde el form-group
+	//		biciContiene.append('<span class="err">Seleciona una bici!</span>'); 
+	//		return false;
+	//	}else{
+	//		$('.err').fadeOut();
+	//	}
+		
+	
+	
+	//var selectBici = $('select').val();
+	
+	//if(selectBici == 0 || selectBici == null){
+	//	var spanBici = $('<span> Por favor selecciona tu bicicleta </span>');
+	//	$('select.form-control').parent().append(spanBici);
+	//	return false;
+	//}
+
+/*function listaBici(){
+        valor = $('select').val();
+        if(valor == null || valor === '0'){
+            $('select').parent().append("<span>¡Selecciona una bici!</span>");
+        }    
+ } */    
+
+function listaBici(){
+	var selectBici = $('select').val();
+	
+	if(selectBici == 0 || selectBici == null){
+		var spanBici = $('<span class="lis"> Por favor selecciona tu bicicleta </span>');
+		$('select.form-control').parent().append(spanBici);
+		return false;
+	}else{
+		$('.lis').fadeOut(); 
+		return true;
+	}
+}
 
 
 function validarLetras(nombre){
