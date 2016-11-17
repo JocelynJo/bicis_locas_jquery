@@ -1,40 +1,96 @@
 
 function validateForm(){
    
-        var name= $('#name').val();
-        if(name.length==0|| name==null){
-            var spanNuevo=$('<span>Este campo es obligatorio</span>');
-            $('.name-container').append(spanNuevo);
-            return false; 
+    var name= $('#name').val();
+    if(name.length==0|| name==null){
+        var spanNuevo=$('<span>Este campo es obligatorio</span>');
+        $('.name-container').append(spanNuevo);
+        return false; 
+    }else if(!validarLetras(name)){
+        var spanNuevo1=$('<span>Desde ingresar solo letras</span>');
+        $('.name-container').append(spanNuevo1);
+        return false; 
+    }else if(!validarMayus(name)){
+        var spanNuevo2=$('<span>Debe comenzar con mayuscula</span>');
+        $('.name-container').append(spanNuevo2);
+        return false; 
+    }else{
+        $('span').fadeOut();
+    }
+
+
+    var lastname= $('#lastname').val();
+    if(lastname.length==0|| lastname==null){
+        var spanLastname=$('<span>Este campo es obligatorio</span>');
+        $('.lastname-container').append(spanLastname);
+        return false; 
+    }else if(!validarLetras(lastname)){
+        var spanLastname1=$('<span>Desde ingresar solo letras</span>');
+        $('.lastname-container').append(spanLastname1);
+        return false; 
+    }else if(!validarMayus(lastname)){
+        var spanLastname2=$('<span>Debe comenzar con mayuscula</span>');
+        $('.lastname-container').append(spanLastname2);
+        return false; 
+    }else {
+        $('span').fadeOut();
+    }
+
+    var caract= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var mail=$('#input-email').val();
+    if(mail.length==0|| mail==null){
+        var spanMail=$('<span>Este campo es obligatorio</span>');
+        $('.email-container').append(spanMail);
+        return false;
+    }else if( !caract.test(mail)){
+        $('span').fadeOut();
+        var spanMail1=$('<span>Mail no valido</span>');
+        $('.email-container').append(spanMail1);
+        return false;
+    }else {
+        $('span').fadeOut(); 
+    }
+
+    var pass=$('#input-password').val();
+    if(pass.length==0||pass==null){
+        var spanPass=$('<span>Este campo es obligatorio</span>');
+        $('#input-password').parent().append(spanPass);
+    }else{
+        $('span').fadeOut(); 
+    }
+
+    if (pass!="123456" && pass!="098754"){
+        if(pass.length>=6){
+            $('span').fadeOut(); 
+            return true;
         }else{
-            $('span').fadeOut();
+            $('span').fadeOut(); 
+            var spanPass2=$('<span>Su contraseña debe tener mas de 6 caracteres</span>')
+            $('#input-password').parent().append(spanPass2);
         }
+    }else{
+        $('span').fadeOut(); 
+        var spanPass3=$('<span>Contresaña poco segura</span>');
+        $('#input-password').parent().append(spanPass3);
+    }
+}
 
-        var lastname= $('#lastname').val();
-        if(lastname.length==0|| lastname==null){
-            var spanLastname=$('<span>Este campo es obligatorio</span>');
-            $('.lastname-container').append(spanLastname);
-            return false; 
-        }else {
-            $('span').fadeOut();
-        }
 
-        var caract= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        var mail=$('#input-email').val();
-        if(mail.length==0|| mail==null){
-            var spanMail=$('<span>Este campo es obligatorio</span>');
-            $('.email-container').append(spanMail);
-            return false;
-        }else if( !caract.test(mail)){
-            $('span').fadeOut();
-            var spanMail1=$('<span>Mail no valido</span>');
-            $('.email-container').append(spanMail1);
-            return false;
 
-        }else {
-           $('span').fadeOut(); 
-        }
-
+function validarLetras(nombre){
+    var filter6=/^[A-Za-z\_\-\.\s\xF1\xD1]+$/;
+    if (filter6.test(nombre)){
+        return true;
+    }else{
+         return false;
+    }
+}
+function validarMayus(nombre){
+    if(nombre.substring(0,1)==nombre.substring(0,1).toUpperCase()){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 /*function validateForm(){
